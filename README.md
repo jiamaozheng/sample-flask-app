@@ -16,11 +16,13 @@ Once you have all of the data you need in a function, you need to put this in a 
 
 The templates use [Jinja](http://jinja.pocoo.org). This allows you use to use a Python-like syntax for creating HTML. For examples, you can pass a list of dictionaries to Jinja, and in the template, do something like this:
 
-    <ul>
-    {% for row in rows %}
-        <li>{{ row.first_name }} ({{ row.username }})</li>
-    {% endfor %}
-    </ul>
+```html
+<ul>
+{% for row in rows %}
+    <li>{{ row.first_name }} ({{ row.username }})</li>
+{% endfor %}
+</ul>
+```
 
 This would then created a bulleted list of users, where each line is like "Kevin (kevin_krenz)".
 
