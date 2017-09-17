@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+    <h2> Users </h2>
+    <ul class=users>
+        {% for user in users %}
+        <li>
+            <a href='user/{{user.username}}'>
+                {{user.first_name}} {{ user.last_name }} ({{user.username}})</li>
+            </a>
+        {% else %}
+            <li>No users</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
