@@ -55,14 +55,16 @@ mysql> source <path_to_script>/create_database.sql;
 Install the following Python modules:
 
 - Flask
+- Flask Bootstrap
+- Flash-Nav
+- Flask Table
 - SQL Alchemy
 - WTForms
-- Flask Table
 
 You can do this with the following command:
 
 ```
-$ pip install Flask SQLAlchemy MySQLdb-python WTForms flask-table
+$ pip install Flask SQLAlchemy MySQLdb-python WTForms flask-table flask-bootstrap flask-nav
 ```
 
 If I'm missing anything here, let me know.

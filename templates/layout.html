@@ -1,30 +1,36 @@
-<!doctype html>
-<title>Sample Web App</title>
-<link rel=stylesheet type=text/css href="{{ url_for('static',filename='style.css') }}">
-<div class=page>
-    <body>
-        <h1><a href="/">Sample Web App</a></h1>
+{% extends "bootstrap/base.html" %}
+{% block title %}Sample Web App{% endblock %}
 
-        {% if session.username %}
-            <div>
-                Logged in user: {{ session.username }}
-                <a href="/logout">(log out)</a>
-            </div>
-        {% else %}
-            <div><a href="/login">Login</a></div>
-        {% endif %}
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <ul>
+{% block body %}
+
+    {% block navbar %}
+        {{ nav.navbar.render() }}
+    {% endblock %}
+
+    {% if session.username %}
+        <div>
+            <em>Logged in as {{ session.username }} </em>
+        </div>
+
+    {% else %}
+        <div>
+            <em>Not currently logged in</em>
+        </div>
+
+    {% endif %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
                 {% for message in messages %}
                     <li>{{ message[1] }}</li>
                 {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
+            </ul>
+        {% endif %}
+    {% endwith %}
 
-        {% block body %}
-        {% endblock %}
-    </body>
-</div>
+    {% block content %}
+    {% endblock %}
+            
+{% endblock %}

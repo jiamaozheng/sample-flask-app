@@ -4,6 +4,9 @@ from flask import Flask, render_template, flash, request, redirect, session, url
 from sqlalchemy import create_engine, text
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from flask_table import Table, Col
+from flask_bootstrap import Bootstrap
+from flask_nav import Nav
+from flask_nav.elements import Navbar, View
 
 # This is a sample of using Flask with MySQL to create a very basic web app.
 # It is not secure nor fully functional. I've added instructional comments to
@@ -25,6 +28,20 @@ app.config['SECRET_KEY'] = 'i34j29r8nvsi9h329835'
 
 # Create connection to database. Yep, that's the username and password.
 engine = create_engine('mysql://db_user:db_password@localhost/example_app')
+
+# Make it look nice(r)! Start Bootstrap and create a navbar
+nav = Nav()
+
+@nav.navigation()
+def navbar():
+    return Navbar(View('Sample Web App','home'),
+                   View('Users','users'),
+                   View('Messages','messages'),
+                   View('Login','login'),
+                   View('Logout','logout'))
+
+Bootstrap(app)
+nav.init_app(app)
 
 # PAGES
 # For each page, create a function that returns a rendered template.
