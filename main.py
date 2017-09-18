@@ -108,7 +108,7 @@ def messages():
         # Don't submit empty messages to the database
         if not message_form.validate():
             flash('Message is required.')
-            redirect('messages')
+            return redirect('messages')
 
         # Update the database
         query = 'INSERT INTO messages (message) VALUES (\'%s\')' % message
