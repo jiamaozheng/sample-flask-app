@@ -26,7 +26,7 @@ The templates use [Jinja](http://jinja.pocoo.org). This allows you use to use a 
 
 This would then created a bulleted list of users, where each line is like "Kevin (kevin_krenz)".
 
-## Pre-requisities
+## Pre-requisites
 
 ### Ubuntu
 
@@ -81,6 +81,6 @@ Again, this is for learning! Once you have things running, start tinkering. Chan
 
 ## TODO
 
-- [ ] Better threme
+- [ ] Better theme
 - [ ] Sortable table
-- [ ] Button to modify/delete entry
+- [ ] Button to modify/delete message
