@@ -34,11 +34,18 @@ nav = Nav()
 
 @nav.navigation()
 def navbar():
-    return Navbar(View('Sample Web App','home'),
-                   View('Users','users'),
-                   View('Messages','messages'),
-                   View('Login','login'),
-                   View('Logout','logout'))
+    '''
+    Create the navigation bar at the top of the page.
+    Display different options based on the user being logged in.
+    '''
+    if 'username' in session:
+        return Navbar(View('Sample Web App','home'),
+                      View('Users','users'),
+                      View('Messages','messages'),
+                      View('Logout','logout'))
+    else:
+        return Navbar(View('Sample Web App','home'),
+                      View('Login','login'))
 
 Bootstrap(app)
 nav.init_app(app)
