@@ -28,15 +28,27 @@ This would then created a bulleted list of users, where each line is like "Kevin
 
 ## Pre-requisities
 
+### Ubuntu
+
+This sample app doesn't need to run on Ubuntu, but I don't know what other dependencies you'll need to install. If you are running Ubuntu, this command should get you all of the dependencies you need:
+
+```
+$ sudo apt install mysql-server mysql-client libmysqlclient-dev python-dev
+```
+
 ### MySQL
 
 Have an instance of MySQL running. Run the `create_database.sql` file to create the example database, database user, table, and populate the table with a few rows. To do this, login as the root user (or an admin user):
 
-    $ mysql -u <user> -p
+```
+$ mysql -u <user> -p
+```
 
 This will ask for the password. Once you're in MySQL, run the script:
 
-    mysql> source <path_to_script>/create_database.sql;
+```
+mysql> source <path_to_script>/create_database.sql;
+```
 
 ### Python
 
@@ -47,13 +59,21 @@ Install the following Python modules:
 - WTForms
 - Flask Table
 
+You can do this with the following command:
+
+```
+$ pip install Flask SQLAlchemy MySQLdb-python WTForms flask-table
+```
+
 If I'm missing anything here, let me know.
 
 ## Running the app
 
 Move to the directory and run the following command:
 
-    $ python main.py
+```
+$ python main.py
+```
 
 ## Tinkering
 
