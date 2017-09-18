@@ -64,7 +64,7 @@ Install the following Python modules:
 You can do this with the following command:
 
 ```
-$ pip install Flask SQLAlchemy MySQLdb-python WTForms flask-table flask-bootstrap flask-nav
+$ pip install Flask SQLAlchemy MySQL-python WTForms flask-table flask-bootstrap flask-nav
 ```
 
 If I'm missing anything here, let me know.
