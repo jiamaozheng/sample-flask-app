@@ -4,6 +4,16 @@
 <div class=page>
     <body>
         <h1><a href="/">Sample Web App</a></h1>
+
+        {% if session.username %}
+            <div>
+                Logged in user: {{ session.username }}
+                <a href="/logout">(log out)</a>
+            </div>
+        {% else %}
+            <div><a href="/login">Login</a></div>
+        {% endif %}
+
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <ul>

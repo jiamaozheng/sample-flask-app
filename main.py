@@ -1,6 +1,6 @@
 #!/usr/bin/env
 
-from flask import Flask, render_template, flash, request, redirect
+from flask import Flask, render_template, flash, request, redirect, session, url_for
 from sqlalchemy import create_engine, text
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from flask_table import Table, Col
@@ -127,7 +127,45 @@ def messages():
 
     # Return template with input form for new messages and table with all messages
     return render_template('messages.html', table=table, form=message_form)
-        
+
+## SESSIONS AND LOGINS
+
+class LoginForm(Form):
+    '''
+    Simple login form. No authentication.
+    '''
+    username = TextField('Username: ', validators=[validators.required()])
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    '''
+    Simple login without authentication.
+    Add username obtained from form to the session variable.
+    '''
+    # Instatiate the login form
+    login_form = LoginForm(request.form)
+
+    # User is attempting to login
+    if request.method == 'POST':
+
+        if login_form.validate():
+            session['username'] = request.form['username']
+            return redirect(url_for('home'))
+
+        else:
+            flash('Username is required.')
+            return redirect(url_for('login'))
+
+    # Method is GET, so display login form
+    return render_template('login.html', form=login_form)
+
+@app.route('/logout')
+def logout():
+    '''
+    Logout by removing username from session variable.
+    '''
+    session.pop('username', None)
+    return redirect(url_for('login'))
 
 
 if __name__ == '__main__':

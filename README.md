@@ -84,4 +84,3 @@ Again, this is for learning! Once you have things running, start tinkering. Chan
 - [ ] Better threme
 - [ ] Sortable table
 - [ ] Button to modify/delete entry
-- [ ] Add login/logout
